@@ -26,3 +26,7 @@
 
 ### Drawbacks
 - Doesn't account for one off necessary purchases, such as a new phone, clothes, etc.
+
+## How to run
+`pip install -r requirements.txt`
+`python main.py`
