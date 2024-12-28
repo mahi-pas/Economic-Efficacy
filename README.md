@@ -22,7 +22,14 @@
 - Yearly Cost of Healthcare
 
 ### Two configurations
-
+- Single person
+    - No childcare
+- Two Parent Household, two kids
+    - Double the income
+    - Quadruple groceries (or maybe 3.5, children eat less)
+    - Double the car
+    - Quadruple the healthcare
+    - Double the childcare
 
 ### Formula
 - Median income's difference between the costs of essentials
