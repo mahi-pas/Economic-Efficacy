@@ -8,36 +8,49 @@
 - A person's needs are the following categories:
     - Survival: food, shelter, water, clothing (which we will ommit since cost of clothing is dependent on taste, some people can wear the same clothes for years), childcare, healthcare
     - Basic Needs(*try living in society without these*): Electricity, Internet, Mobile Plans, Car
+- This is based on if you want to be frugal
 
 ### Data to track:
 - Median Income - county? https://worldpopulationreview.com/state-rankings/median-household-income-by-state
 - Yearly Cost of 4 Bedroom Home (Mortgage) - county? https://www.self.inc/info/house-prices-by-state/
+- Rent of one bedroom
 - Yearly Cost of Childcare/Education https://worldpopulationreview.com/state-rankings/child-care-costs-by-state
 - Yearly Cost of Groceries https://worldpopulationreview.com/state-rankings/grocery-prices-by-state
 - Yearly Cost of Water https://worldpopulationreview.com/state-rankings/water-prices-by-state
-- Yearly Cost of Electricity <- Yoav, you do this cost and under
-- Yearly Cost of Internet
-- Yearly Cost of Mobile Plans
-- Yearly Cost of a car
-- Yearly Cost of Healthcare
+- Yearly Cost of Electricity https://worldpopulationreview.com/state-rankings/electricity-cost-by-state
+- Yearly Cost of Internet https://finance.yahoo.com/news/servicetitan-initiated-outperform-baird-125506702.html
+- Yearly Cost of Mobile Plans - same, but include taxes https://taxfoundation.org/data/all/state/wireless-taxes-cell-phone-tax-rates-by-state-2024/ - avg is $144 via: https://www.cnbc.com/select/how-to-cut-your-cell-phone-bill-costs/
+- Yearly Cost of a used car/insurance https://www.gobankingrates.com/saving-money/car/cost-owning-car-by-state/
+- Yearly Cost of Healthcare https://worldpopulationreview.com/state-rankings/health-care-costs-by-state
+
+#### Helpful secondary data
+- State populations https://worldpopulationreview.com/states
 
 ### Two configurations
 - Single person
     - No childcare
+    - Housing is in rent?
 - Two Parent Household, two kids
     - Double the income
     - Quadruple groceries (or maybe 3.5, children eat less)
     - Double the car
     - Quadruple the healthcare
     - Double the childcare
+    - Quadruple Mobile plans
 
 ### Formula
-- Median income's difference between the costs of essentials
+- Income = Median income - taxes
+- Income's difference between the costs of essentials
+or
+- Percentile of income that can afford the basics + 100/200 to save each month
 
 ### Drawbacks
 - Doesn't account for one off necessary purchases, such as a new phone, clothes, etc.
-- Or other expenditures that aren't necessary but are important such as investment, extra education, extracurriculars, dating
+- Or other expenditures that aren't necessary but are important such as investment/savings, extra education, extracurriculars, dating
+- People who are parents would be making more, single people would make less
+- Taxes for each data point?
 
 ## How to run
 `pip install -r requirements.txt`
+
 `python main.py`
