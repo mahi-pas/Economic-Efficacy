@@ -10,22 +10,26 @@
     - Basic Needs(*try living in society without these*): Electricity, Internet, Mobile Plans, Car
 
 ### Data to track:
-- Median Income
-- Yearly Cost of 4 Bedroom Home (Mortgage)
-- Yearly Cost of Childcare/Education
-- Yearly Cost of Groceries
-- Yearly Cost of Water
+- Median Income - county? https://worldpopulationreview.com/state-rankings/median-household-income-by-state
+- Yearly Cost of 4 Bedroom Home (Mortgage) - county? https://www.self.inc/info/house-prices-by-state/
+- Yearly Cost of Childcare/Education https://worldpopulationreview.com/state-rankings/child-care-costs-by-state
+- Yearly Cost of Groceries https://worldpopulationreview.com/state-rankings/grocery-prices-by-state
+- Yearly Cost of Water https://worldpopulationreview.com/state-rankings/water-prices-by-state
 - Yearly Cost of Electricity <- Yoav, you do this cost and under
 - Yearly Cost of Internet
 - Yearly Cost of Mobile Plans
 - Yearly Cost of a car
 - Yearly Cost of Healthcare
 
+### Two configurations
+
+
 ### Formula
 - Median income's difference between the costs of essentials
 
 ### Drawbacks
 - Doesn't account for one off necessary purchases, such as a new phone, clothes, etc.
+- Or other expenditures that aren't necessary but are important such as investment, extra education, extracurriculars, dating
 
 ## How to run
 `pip install -r requirements.txt`
