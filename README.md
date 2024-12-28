@@ -15,7 +15,7 @@
 - Yearly Cost of Childcare/Education
 - Yearly Cost of Groceries
 - Yearly Cost of Water
-- Yearly Cost of Electricity
+- Yearly Cost of Electricity <- Yoav, you do this cost and under
 - Yearly Cost of Internet
 - Yearly Cost of Mobile Plans
 - Yearly Cost of a car
