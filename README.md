@@ -1,10 +1,12 @@
-# True Economy Measurement
+# Economic Efficacy Map
 
 ## How am I going to determine the true effectiveness of an economy?
+In the last election, people complained about the economy being bad while politicians said the GDP was rising. Both were correct, but talking about different things. We need to measure the economy based on things that matter to average people. Hopefully this report can move us closer in that direction. 
+- Whatever you choose as the metric for sucess will be optimized for
 
 ### Philosophical principles:
 - The effectiveness of an economy is based on whether an average person can satisfy their needs, not a number being high
-- Quality of goods used to satisfy needs explains difference between more developed economies. (A 4 bedroom house in America is nicer than a 4 bedroom house in India, or even just nicer areas). This is difficult to measure, so we will ignore this factor. :(
+- Quality of goods used to satisfy needs explains difference between more developed economies. (A 4 bedroom house in America is nicer than a 4 bedroom house in India, or even just nicer areas within the country). Economic Efficacy does not measure quality, only if the goods arrive.
 - A person's needs are the following categories:
     - Survival: food, shelter, water, clothing (which we will ommit since cost of clothing is dependent on taste, some people can wear the same clothes for years), childcare, healthcare
     - Basic Needs(*try living in society without these*): Electricity, Internet, Mobile Plans, Car
@@ -12,7 +14,10 @@
 
 ### Data to track:
 - Median Income - county? https://worldpopulationreview.com/state-rankings/median-household-income-by-state
+    - Median family income - https://worldpopulationreview.com/state-rankings/average-family-income
 - Yearly Cost of 4 Bedroom Home (Mortgage) - county? https://www.self.inc/info/house-prices-by-state/
+    - Homeowner's insurance: https://www.bankrate.com/insurance/homeowners-insurance/states/#home-insurance-rates-by-state
+    - Property tax: https://www.rocketmortgage.com/learn/property-taxes-by-state
 - Rent of one bedroom
 - Yearly Cost of Childcare/Education https://worldpopulationreview.com/state-rankings/child-care-costs-by-state
 - Yearly Cost of Groceries https://worldpopulationreview.com/state-rankings/grocery-prices-by-state
@@ -26,11 +31,23 @@
 #### Helpful secondary data
 - State populations https://worldpopulationreview.com/states
 
+### Datapoints:
+- Median Family Income
+- Yearly cost of mortgage on 4 bedroom (assuming 20% downpayment) home plus property tax and homeowner's insurance
+- Yearly Cost of Childcare for two children
+- Yearly Cost of Grocery for 3.5 people
+- Yearly Cost of Water
+- Yearly Cost of Electricity
+- Yearly Cost of Internet
+- Yearly Cost of Mobile plans for 4 people
+- Yearly Cost of Used car+insurance 
+- Yearly Cost of Healthcare
+
 ### Two configurations
-- Single person
+- Single person ?
     - No childcare
-    - Housing is in rent?
-- Two Parent Household, two kids
+    - Housing is in rent? 
+- Two Parent Household, two kids -> Focus on this
     - Double the income
     - Quadruple groceries (or maybe 3.5, children eat less)
     - Double the car
@@ -43,6 +60,9 @@
 - Income's difference between the costs of essentials
 or
 - Percentile of income that can afford the basics + 100/200 to save each month
+
+### Assumptions
+- 
 
 ### Drawbacks
 - Doesn't account for one off necessary purchases, such as a new phone, clothes, etc.
