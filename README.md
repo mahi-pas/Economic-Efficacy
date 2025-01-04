@@ -14,10 +14,11 @@ In the last election, people complained about the economy being bad while politi
 
 ### Data to track:
 - Median Income - county? https://worldpopulationreview.com/state-rankings/median-household-income-by-state
-    - Median family income - https://worldpopulationreview.com/state-rankings/average-family-income
+    - Median family income - https://www.justice.gov/ust/eo/bapcpa/20240401/bci_data/median_income_table.htm
 - Yearly Cost of 4 Bedroom Home (Mortgage) - county? https://www.self.inc/info/house-prices-by-state/
     - Homeowner's insurance: https://www.bankrate.com/insurance/homeowners-insurance/states/#home-insurance-rates-by-state
     - Property tax: https://www.rocketmortgage.com/learn/property-taxes-by-state
+- Rent: https://rentalrealestate.com/data/rent/new-jersey/
 - Rent of one bedroom
 - Yearly Cost of Childcare/Education https://worldpopulationreview.com/state-rankings/child-care-costs-by-state
 - Yearly Cost of Groceries https://worldpopulationreview.com/state-rankings/grocery-prices-by-state
@@ -32,8 +33,8 @@ In the last election, people complained about the economy being bad while politi
 - State populations https://worldpopulationreview.com/states
 
 ### Datapoints:
-- Median Family Income
-- Yearly cost of mortgage on 4 bedroom (assuming 20% downpayment) home plus property tax and homeowner's insurance
+- Median Family Income - 4 people
+- Yearly Cost of Rent
 - Yearly Cost of Childcare for two children
 - Yearly Cost of Grocery for 3.5 people
 - Yearly Cost of Water
@@ -42,6 +43,7 @@ In the last election, people complained about the economy being bad while politi
 - Yearly Cost of Mobile plans for 4 people
 - Yearly Cost of Used car+insurance 
 - Yearly Cost of Healthcare
+
 
 ### Two configurations
 - Single person ?
@@ -64,11 +66,12 @@ or
 ### Assumptions
 - 
 
-### Drawbacks
+### Drawbacks/Limitations
 - Doesn't account for one off necessary purchases, such as a new phone, clothes, etc.
 - Or other expenditures that aren't necessary but are important such as investment/savings, extra education, extracurriculars, dating
 - People who are parents would be making more, single people would make less
 - Taxes for each data point?
+- Don't factor owning a home, since it's harder to calculate a monthly cost for it given variables like downpayment
 
 ## How to run
 `pip install -r requirements.txt`

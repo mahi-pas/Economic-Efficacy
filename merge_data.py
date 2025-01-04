@@ -25,6 +25,6 @@ def merge_files(output_file, input_files):
             writer.writerow([state] + data[state])
 
 if __name__ == '__main__':
-    input_files = glob.glob('Data/*.csv')
+    input_files = glob.glob('Data/*.csv') + glob.glob('MyData/*.csv')
     merge_files('MyData/merged_data.csv', input_files)
 
