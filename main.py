@@ -4,6 +4,7 @@ import plotly.express as px
 # Load the dataset
 df = pd.read_csv('MyData/final_dataset.csv')
 
+
 # Create the plotly map
 fig = px.choropleth(df, 
                     locations="State Code",  
@@ -14,6 +15,7 @@ fig = px.choropleth(df,
                     title="Total Cost For Family Of 4 by State",
                     scope="usa",
                     )
+
 
 # Show the map
 fig.show()
