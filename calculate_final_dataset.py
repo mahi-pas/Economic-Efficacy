@@ -47,12 +47,19 @@ with open('MyData/merged_data.csv', newline='') as csvfile:
             + (yearly_grocery * 3.5) + (yearly_water * 4) + (yearly_electricity * 4) + yearly_internet
             + (yearly_mobile_plan_tax * mobile_plan_family) + (yearly_car * 2) + (yearly_healthcare * 4)
 
+            total_cost_family = round(total_cost_family, 2)
+
             total_cost_single = yearly_studio_rent + yearly_grocery + yearly_water 
             + yearly_electricity + (yearly_mobile_plan_tax * mobile_plan_single) + yearly_internet
             + yearly_car + yearly_healthcare
 
+            total_cost_single = round(total_cost_single, 2)
+
             income_minus_cost_family = median_family_income - total_cost_family
             income_minus_cost_single = median_single_income - total_cost_single
+
+            income_minus_cost_family = round(income_minus_cost_family, 2)
+            income_minus_cost_single = round(income_minus_cost_single, 2)
 
             # Write the result to the output CSV
             writer.writerow({

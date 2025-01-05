@@ -71,7 +71,7 @@ or
 
 ### Drawbacks/Limitations
 - Doesn't account for one off necessary purchases, such as a new phone, clothes, etc.
-- Or other expenditures that aren't necessary but are important such as investment/savings, extra education, extracurriculars, dating
+- Or other expenditures that aren't necessary but are important such as investment/savings, extra education, extracurriculars
 - People who are parents would be making more, single people would make less
 - Taxes for each data point?
 - Don't factor owning a home, since it's harder to calculate a monthly cost for it given variables like downpayment

@@ -5,11 +5,14 @@
     <title>US Map</title>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script src="https://d3js.org/d3.v5.min.js"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link
-    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
-    rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.min.css">
+    <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
     <style>
         .map {
             width: 50%;
@@ -23,27 +26,53 @@
             text-align: center;
             font-family: 'Inter', sans-serif;
         }
+        table.dataTable {
+            width: 80%;
+            margin: 2em auto;
+            border-collapse: separate;
+            border-spacing: 0;
+            font-family: 'Inter', sans-serif;
+        }
+        table.dataTable thead th {
+            background-color: #f2f2f2;
+            text-align: center;
+            padding: 0.5em;
+        }
+        table.dataTable tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        table.dataTable tbody td {
+            padding: 0.5em;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
     <h1>Total Cost for Family of Four</h1>
+    <h3>Only for essentials, excludes discretionary spending or one off necessary spending like clothes. For closer to true cost, add 20-30%</h3>
     <div class="map" id="familyoffour"></div>
     <h1>Median Income after Tax for Family of Four</h1>
     <div class="map" id="familyoffourincome"></div>
     <h1>Leftover Income for Family of Four</h1>
+    <h3>How much money does a family of four have leftover after paying for essentials?</h3>
     <div class="map" id="familyoffournet"></div>
     <h1>Total Cost for Single Person</h1>
+    <h3>Only for essentials, excludes discretionary spending or one off necessary spending like clothes. For closer to true
+        cost, add 20-30%</h3>
     <div class="map" id="single"></div>
     <h1>Median Income after Tax for Single Person</h1>
     <div class="map" id="singleincome"></div>
     <h1>Leftover Income for Single Person</h1>
+    <h3>How much money does a single person have leftover after paying for essentials?</h3>
     <div class="map" id="singlenet"></div>
     <h1>Difference in Cost of Family vs Being Single</h1>
     <h3>How much more expensive is it to have a family?</h3>
     <div class="map" id="family-single"></div>
     <h1>Leftover Income for Family vs Single Person</h1>
-    <h3>How much more money does a family have leftover compared to a single person?</h3>
+    <h3>How much better are families doing compared to a single person?</h3>
     <div class="map" id="net-family-single"></div>
+    <table id="myData" class="display"></table>
+    <button id="downloadBtn">Download CSV</button>
     <script>
         d3.csv("MyData/final_dataset.csv").then(function(data) {
             // Assume the CSV has columns: 'State Code' (e.g., 'AL', 'AK', etc.) and 'Total Cost for Family of 4'
@@ -112,6 +141,52 @@
             trace.z = data.map(row => row['Leftover Income for Family vs Single Person']);
             trace.colorscale = more_is_green;
             Plotly.newPlot('net-family-single', [trace], layout);
+
+            let headers = [
+                "State Code",
+                "Total Cost for Family of 4",
+                "Median Family Income",
+                "Leftover Income for Family of Four",
+                "Total Cost for Single Person",
+                "Median Single Income",
+                "Leftover Income for Single Person",
+                "Difference in Cost of Family vs Being Single",
+                "Leftover Income for Family vs Single Person"
+            ];
+            let table = d3.select("#myData");
+            let thead = table.append("thead").append("tr");
+            headers.forEach(h => thead.append("th").text(h));
+            let tbody = table.append("tbody");
+            data.forEach(row => {
+                let tr = tbody.append("tr");
+                headers.forEach(h => {
+                    let value = row[h];
+                    let num = parseFloat(value);
+                    if (!isNaN(num)) {
+                        value = num.toFixed(2);
+                    }
+                    tr.append("td").text(value);
+                });
+            });
+            $('#myData').DataTable();
+            
+            // Download button logic
+            document.getElementById("downloadBtn").addEventListener("click", function() {
+                let allRows = [];
+                allRows.push(headers.join(","));
+                data.forEach(row => {
+                    let rowData = headers.map(h => row[h]);
+                    allRows.push(rowData.join(","));
+                });
+                let csvContent = allRows.join("\n");
+                let blob = new Blob([csvContent], { type: "text/csv" });
+                let url = URL.createObjectURL(blob);
+                let link = document.createElement("a");
+                link.href = url;
+                link.download = "table_data.csv";
+                link.click();
+                URL.revokeObjectURL(url);
+            });
         });
     </script>
 </body>
