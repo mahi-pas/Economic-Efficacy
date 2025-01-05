@@ -44,7 +44,7 @@ In the last election, people complained about the economy being bad while politi
 - Yearly Cost of Electricity
 - Yearly Cost of Internet
 - Yearly Cost of Mobile plans for 4 people
-- Yearly Cost of Used car+insurance 
+- Yearly Cost of car+insurance+gas
 - Yearly Cost of Healthcare
 
 
