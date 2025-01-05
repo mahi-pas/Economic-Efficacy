@@ -26,6 +26,7 @@ In the last election, people complained about the economy being bad while politi
 - Yearly Cost of Electricity https://worldpopulationreview.com/state-rankings/electricity-cost-by-state, https://www.eia.gov/electricity/monthly/epm_table_grapher.php?t=epmt_5_6_a
 - Yearly Cost of Internet https://finance.yahoo.com/news/servicetitan-initiated-outperform-baird-125506702.html
 - Yearly Cost of Mobile Plans - same, but include taxes https://taxfoundation.org/data/all/state/wireless-taxes-cell-phone-tax-rates-by-state-2024/ - avg is $144 via: https://www.cnbc.com/select/how-to-cut-your-cell-phone-bill-costs/
+    - https://www.t-mobile.com/cell-phone-plans - let's estimate 60/single 120/4 people
 - Yearly Cost of a car https://www.gobankingrates.com/saving-money/car/cost-owning-car-by-state/
 - Yearly Cost of Healthcare https://worldpopulationreview.com/state-rankings/health-care-costs-by-state
 

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Total Cost For Family Of 4 by State</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <div id="choropleth" style="width: 100%; height: 100vh;"></div>
+    <script>
+        Plotly.d3.csv('MyData/final_dataset.csv', function(err, rows){
+            function unpack(rows, key) {
+                return rows.map(function(row) { return row[key]; });
+            }
+
+            var data = [{
+                type: 'choropleth',
+                locationmode: 'USA-states',
+                locations: unpack(rows, 'State Code'),
+                z: unpack(rows, 'Income Minus Cost for 4'),
+                text: unpack(rows, 'State'),
+                colorscale: 'Plasma',
+                colorbar: {
+                    title: 'Income Minus Cost for 4'
+                }
+            }];
+
+            var layout = {
+                title: 'Total Cost For Family Of 4 by State',
+                geo: {
+                    scope: 'usa',
+                    countrycolor: 'rgb(255, 255, 255)',
+                    showland: true,
+                    landcolor: 'rgb(217, 217, 217)',
+                    subunitwidth: 1,
+                    countrywidth: 1,
+                    subunitcolor: 'rgb(255, 255, 255)'
+                }
+            };
+
+            Plotly.newPlot('choropleth', data, layout, {showLink: false});
+        });
+    </script>
+</body>
+</html>
