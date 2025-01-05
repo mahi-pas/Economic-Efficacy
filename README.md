@@ -20,7 +20,8 @@ In the last election, people complained about the economy being bad while politi
     - Property tax: https://www.rocketmortgage.com/learn/property-taxes-by-state
 - Rent: https://rentalrealestate.com/data/rent/new-jersey/
 - Rent of one bedroom
-- Yearly Cost of Childcare/Education https://worldpopulationreview.com/state-rankings/child-care-costs-by-state
+- Yearly Cost of Childcare https://worldpopulationreview.com/state-rankings/child-care-costs-by-state
+- Child Tax Credit https://dig.abclocal.go.com/ccg/interactives/child-tax-credit-calculator/index.html
 - Yearly Cost of Groceries https://worldpopulationreview.com/state-rankings/grocery-prices-by-state
 - Yearly Cost of Water https://worldpopulationreview.com/state-rankings/water-prices-by-state
 - Yearly Cost of Electricity https://worldpopulationreview.com/state-rankings/electricity-cost-by-state, https://www.eia.gov/electricity/monthly/epm_table_grapher.php?t=epmt_5_6_a
@@ -37,6 +38,7 @@ In the last election, people complained about the economy being bad while politi
 - Median Family Income - 4 people
 - Yearly Cost of Rent
 - Yearly Cost of Childcare for two children
+- Child Tax Credit
 - Yearly Cost of Grocery for 3.5 people
 - Yearly Cost of Water
 - Yearly Cost of Electricity
@@ -73,8 +75,6 @@ or
 - People who are parents would be making more, single people would make less
 - Taxes for each data point?
 - Don't factor owning a home, since it's harder to calculate a monthly cost for it given variables like downpayment
+- Does not include child tax credits per state, that would be its own project
 
-## How to run
-`pip install -r requirements.txt`
 
-`python main.py`

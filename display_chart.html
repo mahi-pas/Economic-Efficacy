@@ -19,20 +19,30 @@
             text-align: center;
             font-family: 'Inter', sans-serif;
         }
+        h3 {
+            text-align: center;
+            font-family: 'Inter', sans-serif;
+        }
     </style>
 </head>
 <body>
     <h1>Total Cost for Family of Four</h1>
     <div class="map" id="familyoffour"></div>
+    <h1>Median Income after Tax for Family of Four</h1>
+    <div class="map" id="familyoffourincome"></div>
     <h1>Leftover Income for Family of Four</h1>
     <div class="map" id="familyoffournet"></div>
     <h1>Total Cost for Single Person</h1>
     <div class="map" id="single"></div>
+    <h1>Median Income after Tax for Single Person</h1>
+    <div class="map" id="singleincome"></div>
     <h1>Leftover Income for Single Person</h1>
     <div class="map" id="singlenet"></div>
     <h1>Difference in Cost of Family vs Being Single</h1>
+    <h3>How much more expensive is it to have a family?</h3>
     <div class="map" id="family-single"></div>
     <h1>Leftover Income for Family vs Single Person</h1>
+    <h3>How much more money does a family have leftover compared to a single person?</h3>
     <div class="map" id="net-family-single"></div>
     <script>
         d3.csv("MyData/final_dataset.csv").then(function(data) {
@@ -79,21 +89,27 @@
                 geo: { scope: 'usa' },
                 margin: { t: 0, b: 0 }
             };
-
+            
             Plotly.newPlot('familyoffour', [trace], layout);
-            trace.z = data.map(row => row['Income Minus Cost for 4']);
+            trace.z = data.map(row => row['Median Family Income']);
+            trace.colorscale = more_is_green;
+            Plotly.newPlot('familyoffourincome', [trace], layout);
+            trace.z = data.map(row => row['Leftover Income for Family of Four']);
             trace.colorscale = more_is_green;
             Plotly.newPlot('familyoffournet', [trace], layout);
             trace.z = data.map(row => row['Total Cost for Single Person']);
             trace.colorscale = less_is_green;
             Plotly.newPlot('single', [trace], layout);
-            trace.z = data.map(row => row['Income Minus Cost for 1']);
+            trace.z = data.map(row => row['Median Single Income']);
+            trace.colorscale = more_is_green;
+            Plotly.newPlot('singleincome', [trace], layout);
+            trace.z = data.map(row => row['Leftover Income for Single Person']);
             trace.colorscale = more_is_green;
             Plotly.newPlot('singlenet', [trace], layout);
-            trace.z = data.map(row => row['Total Cost for Family of 4'] - row['Total Cost for Single Person']);
+            trace.z = data.map(row => row['Difference in Cost of Family vs Being Single']);
             trace.colorscale = less_is_green;
             Plotly.newPlot('family-single', [trace], layout);
-            trace.z = data.map(row => row['Income Minus Cost for 4'] - row['Income Minus Cost for 1']);
+            trace.z = data.map(row => row['Leftover Income for Family vs Single Person']);
             trace.colorscale = more_is_green;
             Plotly.newPlot('net-family-single', [trace], layout);
         });
