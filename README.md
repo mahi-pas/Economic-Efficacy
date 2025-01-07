@@ -35,15 +35,17 @@ In the last election, people complained about the economy being bad while politi
 - State populations https://worldpopulationreview.com/states
 
 ### Datapoints:
-- Median Family Income - 4 people
-- Yearly Cost of Rent
-- Yearly Cost of Childcare for two children
-- Child Tax Credit
-- Yearly Cost of Grocery for 3.5 people
+- Median Gross Family Income - 4 people
+- Median Gross Income - Single Person
+- Yearly Cost of Rent for a Four Bedroom Home
+- Yearly Cost of Rent for a Studio
+- Yearly Cost of Childcare
+- Child Tax Credit based on Average Income of State and one kid under 6 and one kid over
+- Yearly Cost of Grocery
 - Yearly Cost of Water
 - Yearly Cost of Electricity
 - Yearly Cost of Internet
-- Yearly Cost of Mobile plans for 4 people
+- Yearly Cost of Mobile plan (factoring in tax)
 - Yearly Cost of car+insurance+gas
 - Yearly Cost of Healthcare
 

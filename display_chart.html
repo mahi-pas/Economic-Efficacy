@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Economic Efficacy</title>
+    <title>Best Economy</title>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script src="https://d3js.org/d3.v5.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -103,7 +103,7 @@
         .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
             background-color: #666;
         }
-        #downloadBtn {
+        .downloadBtn {
             display: block;
             margin: 2em auto;
             padding: 1em 2em;
@@ -114,7 +114,7 @@
             cursor: pointer;
             color: #fff;
         }
-        #downloadBtn:hover {
+        .downloadBtn:hover {
             background-color: #1c1c1c;
         }
         body {
@@ -127,7 +127,7 @@
     </style>
 </head>
 <body>
-    <h1 class="title">States With The Best Economy</h1>
+    <h1 class="title">States With The Best Economy 2024</h1>
     <div class="map">
         <p>In the last election, people complained about the economy being bad while politicians said the GDP was rising. Both were correct, but talking about different things. We need to measure the economy based on things that matter to average people. Hopefully this report can move us closer in that direction.</p>
     </div>
@@ -162,9 +162,67 @@
     <div class="map" id="net-family-single"></div>
     <h1>Data</h1>
     <table id="myData" class="display"></table>
-    <button id="downloadBtn">Download CSV</button>
+    <button class="downloadBtn" id="downloadBtn">Download CSV</button>
+    <button class="downloadBtn" id="downloadBtnRaw">Download Raw Data CSV</button>
 
-    <h1 class="title">Miscellaneous other data</h1>
+    <h1 class="title">Methodology</h1>
+    <h1>Philosophical Principles</h1>
+    <div class="map">
+        <ul>
+            <li>The effectiveness of an economy is based on whether an average person can satisfy their needs, not a number being high</li>
+            <li>Quality of goods used to satisfy needs explains difference between more developed economies. (A 4 bedroom house in America is nicer than a 4 bedroom house in India, or even just nicer areas within the America). Economic Efficacy does not measure quality, only if the goods arrive.</li>
+            <li>A person's needs are the following categories:
+                <ul>
+                    <li>Survival: food, shelter, water, clothing (which we will omit since cost of clothing is dependent on taste, some people can wear the same clothes for years), childcare, healthcare</li>
+                    <li>Basic Needs(*try living in society without these*): Electricity, Internet, Mobile Plans, Car</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <h1>Data Tracked:</h1>
+    <div class="map">
+        <ul>
+            <li>Median Gross Family Income - 4 people</li>
+            <li>Median Gross Income - Single Person</li>
+            <li>Yearly Cost of Rent for a Four Bedroom Home</li>
+            <li>Yearly Cost of Rent for a Studio</li>
+            <li>Yearly Cost of Childcare</li>
+            <li>Child Tax Credit based on Average Income of State and one kid under 6 and one kid over</li>
+            <li>Yearly Cost of Grocery</li>
+            <li>Yearly Cost of Water</li>
+            <li>Yearly Cost of Electricity</li>
+            <li>Yearly Cost of Internet</li>
+            <li>Yearly Cost of Mobile plan (factoring in tax, assuming single line is 60 and 4 lines is 120)</li>
+            <li>Yearly Cost of Car+Insurance+Gas</li>
+            <li>Yearly Cost of Healthcare</li>
+        </ul>
+    </div>
+    <h1>Formulas</h1>
+    <div class="map">
+        <ul>
+            <li>Total Cost for Family of Four = Yearly 4 Bedroom Rent + (Yearly Childcare * 2) - (Yearly Child Tax Credit) + (Yearly Grocery * 3.5) + (Yearly Water * 4) + (Yearly Electricity * 4) + Yearly Internet + (Yearly Mobile Plan Tax * Mobile Plan Family) + (Yearly Car * 2) + (Yearly Healthcare * 4)</li>
+            <li>Total Cost for Single Person = Yearly Studio Rent + Yearly Grocery + Yearly Water + Yearly Electricity + (Yearly Mobile Plan Tax * Mobile Plan Single) + Yearly Internet + Yearly Car + Yearly Healthcare</li>
+            <li>Leftover Income for Family of Four = Median Family Income - Total Cost for Family of Four</li>
+            <li>Leftover Income for Single Person = Median Single Income - Total Cost for Single Person</li>
+            <li>Percent Income Used On Essentials for Family of Four = (Total Cost for Family of Four / Median Family Income) * 100</li>
+            <li>Percent Income Used On Essentials for Single Person = (Total Cost for Single Person / Median Single Income) * 100</li>
+            <li>Average Percent Income Used On Essentials = (Percent Income Used On Essentials for Family of Four + Percent Income Used On Essentials for Single Person) / 2</li>
+            <li>Average Income Leftover = (Leftover Income for Family of Four + Leftover Income for Single Person) / 2</li>
+        </ul>
+    </div>
+    <h1>Drawbacks/Limitations</h1>
+    <div class="map">
+        <ul>
+            <li>Doesn't account for one off necessary purchases, such as a new phone, clothes, etc.</li>
+            <li>Or other expenditures that aren't necessary but are important such as investment/savings, extra education, extracurriculars</li>
+            <li>People who are parent make more, which could happen because people who are financially well off are more likely to start a family</li>
+            <li>Taxes for each data point?</li>
+            <li>Don't factor owning a home, since it's harder to calculate a monthly cost for it given variables like downpayment</li>
+            <li>Does not include child tax credits per state, that would be its own project</li>
+        </ul>
+    </div>
+
+    <h1 class="title">Supporting data</h1>
     <h1>Median Income after Tax for Family of Four</h1>
     <div class="map" id="familyoffourincome"></div>
     <h1>Median Income after Tax for Single Person</h1>
@@ -175,8 +233,97 @@
     <h1>Yearly 4 Bedroom Rent</h1>
     <h3>How much does it cost to rent a 4 bedroom apartment in each state?</h3>
     <div class="map" id="4-bedroom-rent"></div>
+    <h1>Yearly Childcare</h1>
+    <div class="map" id="childcare"></div>
+    <h1>Child Tax Credit</h1>
+    <div class="map" id="child-tax-credit"></div>
+    <h1>Yearly Grocery</h1>
+    <div class="map" id="grocery"></div>
+    <h1>Yearly Water</h1>
+    <div class="map" id="water"></div>
+    <h1>Yearly Electricity</h1>
+    <div class="map" id="electricity"></div>
+    <h1>Yearly Internet</h1>
+    <div class="map" id="internet"></div>
+    <h1>Yearly Mobile Plan Tax Rate</h1>
+    <div class="map" id="mobile-plan"></div>
+    <h1>Yearly Cost for 1 Car</h1>
+    <div class="map" id="car"></div>
+    <h1>Yearly Healthcare</h1>
+    <div class="map" id="healthcare"></div>
 
+    <h1>Supporting Data</h1>
+    <table id="miscData" class="display"></table>
+    <button class="downloadBtn" id="downloadMiscBtn">Download Supporting Data CSV</button>
 
+    <script>
+        document.getElementById("downloadMiscBtn").addEventListener("click", function() {
+            d3.csv("MyData/final_dataset.csv").then(function(data) {
+                let miscHeaders = [
+                    "State",
+                    "Yearly Studio Rent",
+                    "Yearly 4 Bedroom Rent",
+                    "Yearly Childcare",
+                    "Child Tax Credit",
+                    "Yearly Grocery",
+                    "Yearly Water",
+                    "Yearly Electricity",
+                    "Yearly Internet",
+                    "Yearly Mobile Plan Tax Rate",
+                    "Yearly Cost for 1 Car",
+                    "Yearly Healthcare"
+                ];
+                let allRows = [];
+                allRows.push(miscHeaders.join(","));
+                data.forEach(row => {
+                    let rowData = miscHeaders.map(h => row[h]);
+                    allRows.push(rowData.join(","));
+                });
+                let csvContent = allRows.join("\n");
+                let blob = new Blob([csvContent], { type: "text/csv" });
+                let url = URL.createObjectURL(blob);
+                let link = document.createElement("a");
+                link.href = url;
+                link.download = "misc_data.csv";
+                link.click();
+                URL.revokeObjectURL(url);
+            });
+        });
+    </script>
+    <script>
+        d3.csv("MyData/final_dataset.csv").then(function(data) {
+            let miscHeaders = [
+                "State",
+                "Yearly Studio Rent",
+                "Yearly 4 Bedroom Rent",
+                "Yearly Childcare",
+                "Child Tax Credit",
+                "Yearly Grocery",
+                "Yearly Water",
+                "Yearly Electricity",
+                "Yearly Internet",
+                "Yearly Mobile Plan Tax Rate",
+                "Yearly Cost for 1 Car",
+                "Yearly Healthcare"
+            ];
+            let miscTable = d3.select("#miscData");
+            let miscThead = miscTable.append("thead").append("tr");
+            miscHeaders.forEach(h => miscThead.append("th").text(h));
+            let miscTbody = miscTable.append("tbody");
+            data.forEach(row => {
+                let tr = miscTbody.append("tr");
+                miscHeaders.forEach(h => {
+                    let value = row[h];
+                    let num = parseFloat(value);
+                    if (!isNaN(num)) {
+                        value = num.toFixed(2);
+                    }
+                    tr.append("td").text(value);
+                });
+            });
+            $('#miscData').DataTable();
+        });
+    </script>
 
 
     <script>
@@ -194,6 +341,19 @@
                 ['0.666666666667', 'rgb(197, 168, 0)'],
                 ['0.777777777778', 'rgb(178, 197, 0)'],
                 ['0.888888888889', 'rgb(147, 224, 0)'],
+                ['1.0', 'rgb(30, 255, 0)']
+            ];
+
+            const more_is_green_small_range = [
+                ['0.0', 'rgb(197, 168, 0)'],
+                ['0.111111111111', 'rgb(194, 176, 0)'],
+                ['0.222222222222', 'rgb(191, 184, 0)'],
+                ['0.333333333333', 'rgb(186, 193, 0)'],
+                ['0.444444444444', 'rgb(179, 202, 0)'],
+                ['0.555555555556', 'rgb(168, 212, 0)'],
+                ['0.666666666667', 'rgb(155, 222, 0)'],
+                ['0.777777777778', 'rgb(134, 233, 0)'],
+                ['0.888888888889', 'rgb(103, 243, 0)'],
                 ['1.0', 'rgb(30, 255, 0)']
             ];
 
@@ -282,7 +442,6 @@
             layout.subtitle = 'How much does it cost to rent a 4 bedroom apartment in each state?';
             Plotly.newPlot('4-bedroom-rent', [trace], layout);
 
-            // New plots
             trace.z = data.map(row => row['Percent Income Used On Essentials Family']);
             trace.colorscale = less_is_green;
             layout.title = 'Percent Income Used On Essentials for Family of Four';
@@ -299,6 +458,44 @@
             layout.title = 'Average Income Leftover';
             layout.subtitle = 'Income of Family + Single Person / 2';
             Plotly.newPlot('avg-income-leftover', [trace], layout);
+            trace.z = data.map(row => row['Yearly Childcare']);
+            trace.colorscale = less_is_green;
+            layout.title = 'Yearly Childcare';
+            Plotly.newPlot('childcare', [trace], layout);
+
+            trace.z = data.map(row => row['Child Tax Credit']);
+            trace.colorscale = more_is_green_small_range;
+            layout.title = 'Child Tax Credit';
+            Plotly.newPlot('child-tax-credit', [trace], layout);
+
+            trace.z = data.map(row => row['Yearly Grocery']);
+            trace.colorscale = less_is_green;
+            layout.title = 'Yearly Grocery';
+            Plotly.newPlot('grocery', [trace], layout);
+
+            trace.z = data.map(row => row['Yearly Water']);
+            layout.title = 'Yearly Water';
+            Plotly.newPlot('water', [trace], layout);
+
+            trace.z = data.map(row => row['Yearly Electricity']);
+            layout.title = 'Yearly Electricity';
+            Plotly.newPlot('electricity', [trace], layout);
+
+            trace.z = data.map(row => row['Yearly Internet']);
+            layout.title = 'Yearly Internet';
+            Plotly.newPlot('internet', [trace], layout);
+
+            trace.z = data.map(row => row['Yearly Mobile Plan Tax Rate']);
+            layout.title = 'Yearly Mobile Plan Tax Rate';
+            Plotly.newPlot('mobile-plan', [trace], layout);
+
+            trace.z = data.map(row => row['Yearly Cost for 1 Car']);
+            layout.title = 'Yearly Cost for 1 Car';
+            Plotly.newPlot('car', [trace], layout);
+
+            trace.z = data.map(row => row['Yearly Healthcare']);
+            layout.title = 'Yearly Healthcare';
+            Plotly.newPlot('healthcare', [trace], layout);
 
             let headers = [
                 "State",
@@ -347,6 +544,12 @@
                 link.download = "table_data.csv";
                 link.click();
                 URL.revokeObjectURL(url);
+            });
+            document.getElementById("downloadBtnRaw").addEventListener("click", function() {
+                let link = document.createElement("a");
+                link.href = "MyData/final_dataset.csv";
+                link.download = "final_dataset.csv";
+                link.click();
             });
         });
     </script>
