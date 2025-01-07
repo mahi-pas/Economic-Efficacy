@@ -71,6 +71,13 @@
     <h1>Leftover Income for Family vs Single Person</h1>
     <h3>How much better are families doing compared to a single person?</h3>
     <div class="map" id="net-family-single"></div>
+    <h1>Yearly Studio Rent</h1>
+    <h3>How much does it cost to rent a studio apartment in each state?</h3>
+    <div class="map" id="studio-rent"></div>
+    <h1>Yearly 4 Bedroom Rent</h1>
+    <h3>How much does it cost to rent a 4 bedroom apartment in each state?</h3>
+    <div class="map" id="4-bedroom-rent"></div>
+    
     <table id="myData" class="display"></table>
     <button id="downloadBtn">Download CSV</button>
     <script>
@@ -141,6 +148,12 @@
             trace.z = data.map(row => row['Leftover Income for Family vs Single Person']);
             trace.colorscale = more_is_green;
             Plotly.newPlot('net-family-single', [trace], layout);
+            trace.z = data.map(row => row['Yearly Studio Rent']);
+            trace.colorscale = less_is_green;
+            Plotly.newPlot('studio-rent', [trace], layout);
+            trace.z = data.map(row => row['Yearly 4 Bedroom Rent']);
+            trace.colorscale = less_is_green;
+            Plotly.newPlot('4-bedroom-rent', [trace], layout);
 
             let headers = [
                 "State Code",
