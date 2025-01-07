@@ -18,7 +18,7 @@ with open('MyData/merged_data.csv', newline='') as csvfile:
     # Prepare the output CSV file
     with open('MyData/final_dataset.csv', mode='w', newline='') as outfile:
         #fieldnames = ['State Code', 'State', 'Median Family Income', 'Yearly 4 Bedroom Rent', 'Yearly Childcare for 2 children', 'Yearly Grocery for 3.5 people', 'Yearly Water for 4 people', 'Yearly Electricity for 4 people', 'Yearly Internet', 'Yearly Mobile Plans for 4', 'Yearly Cost for 2 Cars', 'Yearly Healthcare for 4 people', 'Total Cost for Family of 4', 'Income Minus Cost for 4', 'Median Single Income', 'Yearly Studio Rent', 'Yearly Groceries for 1 person', 'Yearly Water for 1 person', 'Yearly Electricity for 1 person', 'Yearly Internet', 'Yearly Mobile Plans for 1', 'Yearly Cost for 1 Car', 'Yearly Healthcare for 1 person', 'Total Cost for Single Person', 'Income Minus Cost for 1']
-        fieldnames = ['State', 'State Code', 'Median Family Income', 'Median Single Income', 'Yearly 4 Bedroom Rent', 'Yearly Studio Rent', 'Yearly Childcare', 'Child Tax Credit', 'Yearly Grocery', 'Yearly Water', 'Yearly Electricity', 'Yearly Internet', 'Yearly Mobile Plan Tax Rate', 'Yearly Cost for 1 Car', 'Yearly Healthcare', 'Total Cost for Family of 4', 'Leftover Income for Family of Four',  'Total Cost for Single Person', 'Leftover Income for Single Person', 'Difference in Cost of Family vs Being Single', 'Leftover Income for Family vs Single Person']
+        fieldnames = ['State', 'State Code', 'Median Family Income', 'Median Single Income', 'Yearly 4 Bedroom Rent', 'Yearly Studio Rent', 'Yearly Childcare', 'Child Tax Credit', 'Yearly Grocery', 'Yearly Water', 'Yearly Electricity', 'Yearly Internet', 'Yearly Mobile Plan Tax Rate', 'Yearly Cost for 1 Car', 'Yearly Healthcare', 'Total Cost for Family of 4', 'Leftover Income for Family of Four',  'Total Cost for Single Person', 'Leftover Income for Single Person', 'Difference in Cost of Family vs Being Single', 'Leftover Income for Family vs Single Person', "Percent Income Used On Essentials Family", "Percent Income Used On Essentials Single", "Average Percent Income Used On Essentials", "Average Income Leftover"]
         writer = csv.DictWriter(outfile, fieldnames=fieldnames)
         writer.writeheader()
 
@@ -61,6 +61,19 @@ with open('MyData/merged_data.csv', newline='') as csvfile:
             income_minus_cost_family = round(income_minus_cost_family, 2)
             income_minus_cost_single = round(income_minus_cost_single, 2)
 
+            percent_income_used_on_essentials_family = total_cost_family / median_family_income
+            percent_income_used_on_essentials_single = total_cost_single / median_single_income
+
+            average_percent_income_used_on_essentials = (percent_income_used_on_essentials_family + percent_income_used_on_essentials_single) / 2
+
+            average_income_leftover = (income_minus_cost_family + income_minus_cost_single) / 2
+
+            percent_income_used_on_essentials_family = round(percent_income_used_on_essentials_family*100, 1)
+            percent_income_used_on_essentials_single = round(percent_income_used_on_essentials_single*100, 1)
+            average_percent_income_used_on_essentials = round(average_percent_income_used_on_essentials*100, 1)
+            average_income_leftover = round(average_income_leftover, 2)
+
+
             # Write the result to the output CSV
             writer.writerow({
                 'State': state,
@@ -83,7 +96,11 @@ with open('MyData/merged_data.csv', newline='') as csvfile:
                 'Total Cost for Single Person': total_cost_single,
                 'Leftover Income for Single Person': income_minus_cost_single,
                 'Difference in Cost of Family vs Being Single': total_cost_family - total_cost_single,
-                'Leftover Income for Family vs Single Person': income_minus_cost_family - income_minus_cost_single
+                'Leftover Income for Family vs Single Person': income_minus_cost_family - income_minus_cost_single,
+                "Percent Income Used On Essentials Family": percent_income_used_on_essentials_family,
+                "Percent Income Used On Essentials Single": percent_income_used_on_essentials_single,
+                "Average Percent Income Used On Essentials": average_percent_income_used_on_essentials,
+                "Average Income Leftover": average_income_leftover
             })
 
             

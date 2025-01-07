@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>US Map</title>
+    <title>Economic Efficacy</title>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script src="https://d3js.org/d3.v5.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,14 +17,15 @@
         .map {
             width: 50%;
             margin: 0 auto;
+            border: 2px solid #444;
+            padding: 1rem;
+            background-color: #333;
+            color: #fff;
         }
-        h1 {
+        h1, h3, h4, p {
             text-align: center;
             font-family: 'Inter', sans-serif;
-        }
-        h3 {
-            text-align: center;
-            font-family: 'Inter', sans-serif;
+            color: #fff;
         }
         table.dataTable {
             width: 80%;
@@ -32,57 +33,154 @@
             border-collapse: separate;
             border-spacing: 0;
             font-family: 'Inter', sans-serif;
+            border-radius: 2rem;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+            background-color: #333;
+            color: #fff;
         }
+
         table.dataTable thead th {
-            background-color: #f2f2f2;
+            background-color: #444;
             text-align: center;
-            padding: 0.5em;
+            padding: 0.75em;
+            font-weight: 500;
+            border-bottom: 1px solid #555;
         }
+
         table.dataTable tbody tr:nth-child(even) {
-            background-color: #f9f9f9;
+            background-color: #444;
         }
-        table.dataTable tbody td {
-            padding: 0.5em;
+
+        table.dataTable th,
+        table.dataTable td {
+            padding: 0.75em;
             text-align: center;
+            border-right: 1px solid #555;
+        }
+
+        table.dataTable th:last-child,
+        table.dataTable td:last-child {
+            border-right: none;
+        }
+        .title {
+            font-size: 4em;
+            margin: 1em 0;
+        }
+        .dataTables_wrapper .dataTables_length,
+        .dataTables_wrapper .dataTables_filter,
+        .dataTables_wrapper .dataTables_paginate,
+        .dataTables_wrapper .dataTables_info {
+            margin: 1em 2em;
+            font-family: 'Inter', sans-serif;
+            color: #fff;
+        }
+        .dataTables_wrapper .dataTables_length label,
+        .dataTables_wrapper .dataTables_filter label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5em;
+        }
+        .dataTables_wrapper .dataTables_filter input[type="search"] {
+            border: 1px solid #555;
+            border-radius: 0.3em;
+            padding: 0.35em;
+            background-color: #444;
+            color: #fff;
+        }
+        .dataTables_wrapper .dataTables_paginate .paginate_button {
+            background-color: #444;
+            border: 1px solid #555;
+            border-radius: 5px;
+            padding: 0.3em 0.6em;
+            margin: 0 3px;
+            cursor: pointer;
+            color: #fff;
+        }
+        .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+            background-color: #555;
+        }
+        .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+            background-color: #666;
+        }
+        #downloadBtn {
+            display: block;
+            margin: 2em auto;
+            padding: 1em 2em;
+            font-size: 1.2em;
+            background-color: #444;
+            border: 1px solid #555;
+            border-radius: 0.5em;
+            cursor: pointer;
+            color: #fff;
+        }
+        #downloadBtn:hover {
+            background-color: #1c1c1c;
+        }
+        body {
+            background: #222;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
         }
     </style>
 </head>
 <body>
+    <h1 class="title">States With The Best Economy</h1>
+    <div class="map">
+        <p>In the last election, people complained about the economy being bad while politicians said the GDP was rising. Both were correct, but talking about different things. We need to measure the economy based on things that matter to average people. Hopefully this report can move us closer in that direction.</p>
+    </div>
     <h1>Total Cost for Family of Four</h1>
     <h3>Only for essentials, excludes discretionary spending or one off necessary spending like clothes. For closer to true cost, add 20-30%</h3>
     <div class="map" id="familyoffour"></div>
-    <h1>Median Income after Tax for Family of Four</h1>
-    <div class="map" id="familyoffourincome"></div>
-    <h1>Leftover Income for Family of Four</h1>
-    <h3>How much money does a family of four have leftover after paying for essentials?</h3>
-    <div class="map" id="familyoffournet"></div>
     <h1>Total Cost for Single Person</h1>
     <h3>Only for essentials, excludes discretionary spending or one off necessary spending like clothes. For closer to true
         cost, add 20-30%</h3>
     <div class="map" id="single"></div>
-    <h1>Median Income after Tax for Single Person</h1>
-    <div class="map" id="singleincome"></div>
+    <h1>Leftover Income for Family of Four</h1>
+    <h3>How much money does a family of four have leftover after paying for essentials?</h3>
+    <div class="map" id="familyoffournet"></div>
     <h1>Leftover Income for Single Person</h1>
     <h3>How much money does a single person have leftover after paying for essentials?</h3>
     <div class="map" id="singlenet"></div>
+    <h1>Average Income Leftover</h1>
+    <h3>Income of Family + Single Person / 2</h3>
+    <div class="map" id="avg-income-leftover"></div>
+    <h1>Percent Income Used On Essentials for Family of Four</h1>
+    <div class="map" id="essentials-family"></div>
+    <h1>Percent Income Used On Essentials for Single Person</h1>
+    <div class="map" id="essentials-single"></div>
+    <h1>Average Percent Income Used On Essentials</h1>
+    <div class="map" id="avg-essentials"></div>
+
     <h1>Difference in Cost of Family vs Being Single</h1>
     <h3>How much more expensive is it to have a family?</h3>
     <div class="map" id="family-single"></div>
     <h1>Leftover Income for Family vs Single Person</h1>
     <h3>How much better are families doing compared to a single person?</h3>
     <div class="map" id="net-family-single"></div>
+    <h1>Data</h1>
+    <table id="myData" class="display"></table>
+    <button id="downloadBtn">Download CSV</button>
+
+    <h1 class="title">Miscellaneous other data</h1>
+    <h1>Median Income after Tax for Family of Four</h1>
+    <div class="map" id="familyoffourincome"></div>
+    <h1>Median Income after Tax for Single Person</h1>
+    <div class="map" id="singleincome"></div>
     <h1>Yearly Studio Rent</h1>
     <h3>How much does it cost to rent a studio apartment in each state?</h3>
     <div class="map" id="studio-rent"></div>
     <h1>Yearly 4 Bedroom Rent</h1>
     <h3>How much does it cost to rent a 4 bedroom apartment in each state?</h3>
     <div class="map" id="4-bedroom-rent"></div>
-    
-    <table id="myData" class="display"></table>
-    <button id="downloadBtn">Download CSV</button>
+
+
+
+
     <script>
-        d3.csv("https://raw.githubusercontent.com/mahi-pas/Economic-Efficacy/refs/heads/main/MyData/final_dataset.csv").then(function(data) {
-            // Assume the CSV has columns: 'State Code' (e.g., 'AL', 'AK', etc.) and 'Total Cost for Family of 4'
+        d3.csv("MyData/final_dataset.csv").then(function(data) {
             let locations = data.map(row => row['State Code']);
             let values = data.map(row => row['Total Cost for Family of 4']);
 
@@ -99,7 +197,6 @@
                 ['1.0', 'rgb(30, 255, 0)']
             ];
 
-            //inverse of more_is_green
             const less_is_green = [
                 ['0.0', 'rgb(30, 255, 0)'],
                 ['0.111111111111', 'rgb(147, 224, 0)'],
@@ -122,41 +219,89 @@
             };
 
             let layout = {
+                title: 'Total Cost for Family of Four<br><sup>Only for essentials, excludes discretionary spending or one off necessary spending like clothes.</sup>',
                 geo: { scope: 'usa' },
-                margin: { t: 0, b: 0 }
+                margin: { t: 50, b: 0 },
+                annotations: [{
+                    text: 'Only for essentials, excludes discretionary spending or one off necessary spending like clothes. For closer to true cost, add 20-30%',
+                    showarrow: false,
+                    align: 'center',
+                    x: 0.5,
+                    y: -0.1,
+                    xref: 'paper',
+                    yref: 'paper',
+                    xanchor: 'center',
+                    yanchor: 'top',
+                    font: {
+                        size: 12
+                    }
+                }]
             };
-            
+
+            // Existing plots
             Plotly.newPlot('familyoffour', [trace], layout);
             trace.z = data.map(row => row['Median Family Income']);
             trace.colorscale = more_is_green;
+            layout.title = 'Median Income after Tax for Family of Four';
             Plotly.newPlot('familyoffourincome', [trace], layout);
             trace.z = data.map(row => row['Leftover Income for Family of Four']);
-            trace.colorscale = more_is_green;
+            layout.title = 'Leftover Income for Family of Four<br><sup>How much money does a family of four have leftover after paying for essentials?</sup>';
+            layout.subtitle = 'How much money does a family of four have leftover after paying for essentials?';
             Plotly.newPlot('familyoffournet', [trace], layout);
             trace.z = data.map(row => row['Total Cost for Single Person']);
             trace.colorscale = less_is_green;
+            layout.title = 'Total Cost for Single Person<br><sup>Only for essentials, excludes discretionary spending or one off necessary spending like clothes.</sup>';
+            layout.subtitle = 'Only for essentials, excludes discretionary spending or one off necessary spending like clothes. For closer to true cost, add 20-30%';
             Plotly.newPlot('single', [trace], layout);
             trace.z = data.map(row => row['Median Single Income']);
             trace.colorscale = more_is_green;
+            layout.title = 'Median Income after Tax for Single Person';
+            layout.subtitle = '';
             Plotly.newPlot('singleincome', [trace], layout);
             trace.z = data.map(row => row['Leftover Income for Single Person']);
-            trace.colorscale = more_is_green;
+            layout.title = 'Leftover Income for Single Person<br><sup>How much money does a single person have leftover after paying for essentials?</sup>';
+            layout.subtitle = 'How much money does a single person have leftover after paying for essentials?';
             Plotly.newPlot('singlenet', [trace], layout);
             trace.z = data.map(row => row['Difference in Cost of Family vs Being Single']);
             trace.colorscale = less_is_green;
+            layout.title = 'Difference in Cost of Family vs Being Single<br><sup>How much more expensive is it to have a family?</sup>';
+            layout.subtitle = 'How much more expensive is it to have a family?';
             Plotly.newPlot('family-single', [trace], layout);
             trace.z = data.map(row => row['Leftover Income for Family vs Single Person']);
             trace.colorscale = more_is_green;
+            layout.title = 'Leftover Income for Family vs Single Person<br><sup>How much better are families doing compared to a single person?</sup>';
+            layout.subtitle = 'How much better are families doing compared to a single person?';
             Plotly.newPlot('net-family-single', [trace], layout);
             trace.z = data.map(row => row['Yearly Studio Rent']);
             trace.colorscale = less_is_green;
+            layout.title = 'Yearly Studio Rent<br><sup>How much does it cost to rent a studio apartment in each state?</sup>';
+            layout.subtitle = 'How much does it cost to rent a studio apartment in each state?';
             Plotly.newPlot('studio-rent', [trace], layout);
             trace.z = data.map(row => row['Yearly 4 Bedroom Rent']);
-            trace.colorscale = less_is_green;
+            layout.title = 'Yearly 4 Bedroom Rent<br><sup>How much does it cost to rent a 4 bedroom apartment in each state?</sup>';
+            layout.subtitle = 'How much does it cost to rent a 4 bedroom apartment in each state?';
             Plotly.newPlot('4-bedroom-rent', [trace], layout);
 
+            // New plots
+            trace.z = data.map(row => row['Percent Income Used On Essentials Family']);
+            trace.colorscale = less_is_green;
+            layout.title = 'Percent Income Used On Essentials for Family of Four';
+            layout.subtitle = '';
+            Plotly.newPlot('essentials-family', [trace], layout);
+            trace.z = data.map(row => row['Percent Income Used On Essentials Single']);
+            layout.title = 'Percent Income Used On Essentials for Single Person';
+            Plotly.newPlot('essentials-single', [trace], layout);
+            trace.z = data.map(row => row['Average Percent Income Used On Essentials']);
+            layout.title = 'Average Percent Income Used On Essentials';
+            Plotly.newPlot('avg-essentials', [trace], layout);
+            trace.z = data.map(row => row['Average Income Leftover']);
+            trace.colorscale = more_is_green;
+            layout.title = 'Average Income Leftover';
+            layout.subtitle = 'Income of Family + Single Person / 2';
+            Plotly.newPlot('avg-income-leftover', [trace], layout);
+
             let headers = [
-                "State Code",
+                "State",
                 "Total Cost for Family of 4",
                 "Median Family Income",
                 "Leftover Income for Family of Four",
@@ -164,7 +309,11 @@
                 "Median Single Income",
                 "Leftover Income for Single Person",
                 "Difference in Cost of Family vs Being Single",
-                "Leftover Income for Family vs Single Person"
+                "Leftover Income for Family vs Single Person",
+                "Percent Income Used On Essentials Family",
+                "Percent Income Used On Essentials Single",
+                "Average Percent Income Used On Essentials",
+                "Average Income Leftover"
             ];
             let table = d3.select("#myData");
             let thead = table.append("thead").append("tr");
@@ -182,8 +331,7 @@
                 });
             });
             $('#myData').DataTable();
-            
-            // Download button logic
+
             document.getElementById("downloadBtn").addEventListener("click", function() {
                 let allRows = [];
                 allRows.push(headers.join(","));
