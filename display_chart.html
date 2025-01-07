@@ -81,7 +81,7 @@
     <table id="myData" class="display"></table>
     <button id="downloadBtn">Download CSV</button>
     <script>
-        d3.csv("MyData/final_dataset.csv").then(function(data) {
+        d3.csv("https://raw.githubusercontent.com/mahi-pas/Economic-Efficacy/refs/heads/main/MyData/final_dataset.csv").then(function(data) {
             // Assume the CSV has columns: 'State Code' (e.g., 'AL', 'AK', etc.) and 'Total Cost for Family of 4'
             let locations = data.map(row => row['State Code']);
             let values = data.map(row => row['Total Cost for Family of 4']);
