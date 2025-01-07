@@ -31,6 +31,20 @@ In the last election, people complained about the economy being bad while politi
 - Yearly Cost of a car https://www.gobankingrates.com/saving-money/car/cost-owning-car-by-state/
 - Yearly Cost of Healthcare https://worldpopulationreview.com/state-rankings/health-care-costs-by-state
 
+
+### Data Sources:
+- Median Income: https://www.justice.gov/ust/eo/bapcpa/20240401/bci_data/median_income_table.htm
+- Rent: https://rentalrealestate.com/data/rent/new-jersey/
+- Cost of Childcare: https://worldpopulationreview.com/state-rankings/child-care-costs-by-state
+- Child Tax Credit: https://dig.abclocal.go.com/ccg/interactives/child-tax-credit-calculator/index.html
+- Cost of Groceries: https://worldpopulationreview.com/state-rankings/grocery-prices-by-state
+- Cost of Water: https://worldpopulationreview.com/state-rankings/water-prices-by-state
+- Cost of Electricity: https://www.eia.gov/electricity/monthly/epm_table_grapher.php?t=epmt_5_6_a
+- Cost of Internet https://finance.yahoo.com/news/servicetitan-initiated-outperform-baird-125506702.html
+- Mobile Plan Taxes: https://taxfoundation.org/data/all/state/wireless-taxes-cell-phone-tax-rates-by-state-2024/
+- Cost of a car: https://www.gobankingrates.com/saving-money/car/cost-owning-car-by-state/
+- Cost of Healthcare https://worldpopulationreview.com/state-rankings/health-care-costs-by-state
+
 #### Helpful secondary data
 - State populations https://worldpopulationreview.com/states
 
@@ -45,8 +59,8 @@ In the last election, people complained about the economy being bad while politi
 - Yearly Cost of Water
 - Yearly Cost of Electricity
 - Yearly Cost of Internet
-- Yearly Cost of Mobile plan (factoring in tax)
-- Yearly Cost of car+insurance+gas
+- Yearly Cost of Mobile plan (factoring in tax, assuming single line is 60 and 4 lines is 120)
+- Yearly Cost of Car+Insurance+Gas
 - Yearly Cost of Healthcare
 
 
